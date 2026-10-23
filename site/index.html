@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aircast — your screen, on the big screen</title>
+<meta name="description" content="Aircast sends your Windows or Linux desktop to any AirPlay receiver. Local network only, no account, open source under GPL-3.0.">
+<meta name="theme-color" content="#08161f">
+<meta property="og:title" content="Aircast — your screen, on the big screen">
+<meta property="og:description" content="AirPlay screen sharing from Windows and Linux. Local network only. Open source.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/icon-512.png">
+<link rel="icon" href="assets/favicon.png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="./">
+    <img src="assets/icon-512.png" alt="" width="30" height="30">
+    <span>Aircast</span>
+  </a>
+  <nav aria-label="Primary">
+    <a href="#capabilities">Capabilities</a>
+    <a href="#beta">Beta notes</a>
+    <a href="#install">Install</a>
+    <a href="https://github.com/4nkitd/aircast">Source</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-copy">
+    <p class="release-line">v0.1.0 <span>public beta</span></p>
+    <h1>Your screen,<br>on the big screen.</h1>
+    <p class="lede">Aircast sends your Windows or Linux desktop to an AirPlay receiver — a TV, an Apple&nbsp;TV, a projector — over the network you already have. No account, no cloud relay, no dongle.</p>
+    <div class="actions">
+      <a class="button primary" href="https://github.com/4nkitd/aircast/releases/latest">Download v0.1.0</a>
+      <a class="button ghost" href="#install">Install notes</a>
+    </div>
+    <p class="requirements">Windows 10/11 x64 · Linux X11 · GPL-3.0 · 1080p30 H.264</p>
+  </div>
+
+  <div class="stage" aria-label="The Aircast panel sending to an AirPlay receiver">
+    <div class="panel-shot">
+      <img src="assets/aircast-panel.png" alt="Aircast panel showing one nearby AirPlay receiver, screen sharing source, and a Start sharing button" width="550" height="852">
+    </div>
+    <svg class="cast-arcs" viewBox="0 0 150 260" aria-hidden="true">
+      <path class="arc a1" d="M6 196 Q 78 196 132 118"/>
+      <path class="arc a2" d="M6 178 Q 82 172 132 100"/>
+      <path class="arc a3" d="M6 160 Q 86 150 132 82"/>
+    </svg>
+    <div class="receiver">
+      <div class="receiver-screen">
+        <div class="receiver-grid" aria-hidden="true"></div>
+        <span class="receiver-label">AirPlay</span>
+      </div>
+      <p class="receiver-caption">Living room TV · 1080p</p>
+    </div>
+  </div>
+</section>
+
+<section id="capabilities" class="band">
+  <h2>Built for the room, not the cloud</h2>
+  <div class="capability-grid">
+    <article>
+      <h3>Finds what is already there</h3>
+      <p>Real mDNS discovery for AirPlay video, AirPlay audio and Google Cast receivers. Refreshes every 25 seconds, keeps saved addresses, and lets you add a device by IP or hostname when multicast is blocked.</p>
+    </article>
+    <article>
+      <h3>Pairs, then streams</h3>
+      <p>PIN or password pairing against the receiver, then a local H.264 stream it controls. Start, stop and reconnect from one panel. Cursor sharing is on and required; system audio is optional and off by default.</p>
+    </article>
+    <article>
+      <h3>Stays on your network</h3>
+      <p>No account, telemetry, cloud service or remote-control listener. Saved addresses are just addresses — they are not claims that a device was reachable before.</p>
+    </article>
+  </div>
+</section>
+
+<section class="band quality">
+  <div class="quality-copy">
+    <h2>Tuned for readable text</h2>
+    <p>Aircast negotiates what the receiver can show, keeps the desktop aspect ratio honest, and treats clean text as the bar — not a 4K badge. Windows captures the primary display through DXGI with a GDI fallback; Linux uses X11.</p>
+    <p class="fine">Windows encoding is quality-first and capped at 1080p30 in this beta. SDR only. HDR, 4K and lossless-text claims are not part of this release.</p>
+  </div>
+  <dl class="spec-list">
+    <div><dt>Capture</dt><dd>DXGI primary monitor, GDI fallback<br>X11 desktop</dd></div>
+    <div><dt>Encode</dt><dd>H.264, quality-first or balanced</dd></div>
+    <div><dt>Discovery</dt><dd>mDNS over IPv4, saved IPv4/IPv6 addresses</dd></div>
+    <div><dt>Audio</dt><dd>Off by default; Windows WASAPI experimental</dd></div>
+  </dl>
+</section>
+
+<section id="beta" class="band beta">
+  <h2>What this beta is honest about</h2>
+  <div class="beta-grid">
+    <div>
+      <h3>Working</h3>
+      <ul>
+        <li>AirPlay screen sharing with PIN/password pairing, start, stop and reconnect</li>
+        <li>AirPlay and Cast receiver discovery, plus manual addresses</li>
+        <li>Windows 10/11 x64 panel and tray, Linux with a StatusNotifier host</li>
+        <li>Optional system audio, disabled by default</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Not in this release</h3>
+      <ul>
+        <li>Google Cast sending, audio-only receivers and file playlists</li>
+        <li>4K, HDR, virtual displays and multiple receivers at once</li>
+        <li>Windows on ARM, Windows 7/8 and headless service sessions</li>
+        <li>Verified Windows system audio; it remains experimental</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="install" class="band install">
+  <h2>Install</h2>
+  <div class="install-grid">
+    <div>
+      <h3>Windows 10/11 x64</h3>
+      <p>Run the setup and launch Aircast from the Start menu. It installs for your user, needs no administrator rights, and includes the FFmpeg build the engine uses.</p>
+      <a class="button primary" href="https://github.com/4nkitd/aircast/releases/download/v0.1.0/aircast-0.1.0-windows-amd64-setup.exe">Download setup.exe</a>
+      <p class="fine">Prefer a portable copy? <a href="https://github.com/4nkitd/aircast/releases/download/v0.1.0/aircast-0.1.0-windows-amd64.zip">Take the zip</a> and keep <code>ffmpeg.exe</code> beside <code>aircast-engine.exe</code>.</p>
+    </div>
+    <div>
+      <h3>Linux X11</h3>
+      <p>The tarball contains the panel, the casting engine and the CLI. Check the checksum, then run <code>install.sh</code> to put everything under <code>~/.local</code>.</p>
+      <pre><code>curl -fsSLO https://github.com/4nkitd/aircast/releases/download/v0.1.0/aircast-0.1.0-linux-amd64.tar.gz
+curl -fsSLO https://github.com/4nkitd/aircast/releases/download/v0.1.0/SHA256SUMS
+sha256sum -c --ignore-missing SHA256SUMS
+tar -xzf aircast-0.1.0-linux-amd64.tar.gz
+./aircast-0.1.0-linux-amd64/install.sh</code></pre>
+      <p class="fine">GNOME needs a StatusNotifier/AppIndicator extension for the tray. Wayland has a portal path, but only X11 was exercised.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div>
+    <img src="assets/icon-512.png" alt="" width="22" height="22">
+    <span>Aircast</span>
+  </div>
+  <p>Independent project. AirPlay, Apple TV, Google Cast and AirParrot are trademarks of their owners; Aircast is not affiliated with Apple, Google or Squirrels.</p>
+  <p class="footer-links">
+    <a href="https://github.com/4nkitd/aircast">Source (GPL-3.0)</a>
+    <a href="https://github.com/4nkitd/aircast/blob/main/THIRD-PARTY.md">Third-party notices</a>
+    <a href="https://github.com/4nkitd/aircast/blob/main/licenses/FFMPEG-WINDOWS.md">FFmpeg provenance</a>
+  </p>
+</footer>
+
+</body>
+</html>

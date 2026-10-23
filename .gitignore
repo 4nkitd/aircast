@@ -1,0 +1,8 @@
+/dist/
+/.build/
+/aircast
+/aircast.exe
+*.log
+/installer/payload/
+.DS_Store
+.ruff_cache/
